@@ -1,0 +1,26 @@
+#!/bin/bash
+
+date=$(date)
+backup="/home/tasha/backup/$date"
+backupdir="/home/tasha/backup"
+cd /home/tasha
+{
+echo
+if [ -f "$backup" ]
+	then
+		rm -rf "$backup"
+ else
+	mkdir $backup"
+fi
+
+cp * $backup
+cd $backup
+rm -rf Dropbox/
+cd /home/tasha
+rm -rf $backup/$backup
+tar -cvrzf $date.bak.tar.gz $backup
+
+rm -rf $backup
+cp $date.bak.tar.gz $backupdir
+} >> /var/log/backup.log 2>&1 | mailx -s "backup successful" tashajanaya@gmail.com
+exit 0

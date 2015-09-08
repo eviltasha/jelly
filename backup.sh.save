@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Make directory for backup
+cd /home/tasha
+{
+
+date=$(date)
+backupdir=/home/tasha/backup/$date
+
+echo
+if [ ! -z $backupdir ]
+	then
+		rm -rf $backupdir
+ else
+	mkdir $backupdir
+fi
+
+cp * $backupdir
+cd $backupdir
+rm -rf Dropbox/
+cd /home/tasha
+
+/usr/bin/rsync -azv $backupdir  /home/tasha/Dropbox/backup/$date
+
+rm -rf
+

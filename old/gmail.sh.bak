@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Shell script to send email via Gmail account with optional attachments
+#
+BODYFILE=""
+
+echo "Recipient:"
+read RECIPIENT
+echo "You entered: $RECIPIENT"
+echo "Subject:"
+read SUBJECT
+echo "You entered: $SUBJECT"
+BODYFILE="/home/tasha/text/$SUBJECT.mail"
+#while true; do
+#  read -p "Do you have any attachments?" yn
+#  case $yn in
+#        [Yy]* ) read -e -p "what is the path to the file?"; FILEPATH; exit;;
+#        [Nn]* ) exit;;
+#       * ) echo "Please answer yes or no.";;
+#    esac
+#done
+echo "Attachment path:"
+read ATTACHPATH
+echo "You entered: $ATTACHPATH"
+#        if  [ $FILEPATH ]; then
+#               echo "You have no attachments. Sending mail."
+#                mailx -s $SUBJECT $RECIPIENT
+#        else
+#                echo "You have attachments. Sending mail."
+#                mailx -s $SUBJECT -a $FILEPATH $RECIPIENT
+#        fi
+#     exit;;
+read -p "Body: " BODY
+echo $BODY > $BODYFILE
+mailx -s "$SUBJECT" -a $ATTACHPATH $RECIPIENT < $BODYFILE
+echo "Mail sent."
+exit 0

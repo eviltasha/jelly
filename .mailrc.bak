@@ -1,0 +1,30 @@
+# gmail account (default)
+
+set from="lithium <lithium.elemental@gmail.com>"
+set sendmail="/usr/bin/msmtp"
+set message-sendmail-extra-arguments="-a gmail"
+set folder=imaps://lithium.elemental@imap.gmail.com
+set password-imaps://lithium.elemental@imap.gmail.com="\"#0oK3R$9%"
+
+account test {
+set from="Tech Support <onlyatest007@gmail.com>"
+set smtp-use-starttls
+set smtp=smtp://smtp.gmail.com:587
+set smtp-auth=login
+set smtp-auth-user=onlyatest007@gmail.com
+set smtp-auth-password="h0stc0llective"
+set folder=imaps://onlyatest007@imap.gmail.com
+set password-onlyatest007@imap.gmail.com="h0stc0llective"
+}
+
+account customer {
+set from="Outgoing Mail Test <lisa@ambientefurniture.com>"
+#set sendmail="/usr/bin/msmtp"
+#set message-sendmail-extra-arguments="-a customer"
+set smtp=smtp://mail.ambientefurniture.com:587
+set smtp-auth=login
+set smtp-auth-user=lisa@ambientefurniture.com
+set smtp-auth-password="wh7816822"
+#set folder=imap://tasha@robotique.us@imap.robotique.us
+#set password-tasha@robotique.us@imap.robotique.us="str0ngp455w0rd"
+}
